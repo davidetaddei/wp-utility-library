@@ -5,40 +5,38 @@ namespace WpUtilityLibrary\Admin\Fields;
 class Dropdown implements UIField
 {
 	private $id;
-	private $domain;
 	private $values;
+
+	const ID = 'id';
+	const NAME = 'name';
 
 	/**
 	 * Text constructor.
 	 * @param $id
-	 * @param $label
 	 * @param $values
-	 * @param $domain
 	 */
-	public function __construct($id, $values, $domain)
+	public function __construct($id, $values)
 	{
 		$this->id = $id;
-		$this->domain = $domain;
 		$this->values = $values;
 	}
 
 	public function render()
 	{
 		$currentValue = get_option($this->id);
-		if (!empty($currentValue))
+		if(!empty($currentValue))
 			$currentValue = (int)$currentValue;
 		?>
-		<select id="<?php echo $this->id ?>" name="<?php echo $this->id ?>">
-			<?php foreach ($this->values as $menu) { ?>
+		<select id="<?php echo $this->id ?>" name="<?php echo $this->id ?>" class="wp-utility-library-admin-dropdown">
+			<?php foreach ($this->values as $value) { ?>
 				<?php
-				if ($currentValue === $menu->term_id) {
+				if ($currentValue === $value[self::ID]) {
 					$selected = ' selected="selected" ';
 				} else {
 					$selected = '';
 				}
 				?>
-				<option <?php echo $selected ?>
-					value="<?php echo $menu->term_id; ?>"><?php echo $menu->name; ?></option>
+				<option <?php echo $selected ?> value="<?php echo $value[self::ID]; ?>"><?php echo $value[self::NAME]; ?></option>
 			<?php } ?>
 		</select>
 		<?php
