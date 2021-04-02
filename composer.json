@@ -1,0 +1,10 @@
+{
+    "name": "davidetaddei/wp-utility-library",
+    "type": "library",
+    "require": {},
+    "autoload": {
+      "psr-4": {
+        "WpUtilityLibrary\\": "library"
+      }
+    }
+}
