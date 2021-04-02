@@ -1,11 +1,11 @@
 <?php
-namespace WpUtilityLibrary;
+namespace WpUtilityLibrary\Admin;
 
 use WpUtilityLibrary\Admin\Fields\Text;
 
-class WpUtilityLibrary
+class AdminUi
 {
-	public static function createTextField($fieldId, $title, $placeholder = '', $page, $sectionId, $field, $optionsGroup)
+	public function createAdminField($fieldId, $title, $placeholder = '', $page, $sectionId, $field, $optionsGroup)
 	{
 		$callback = [new Text($fieldId, $placeholder), 'render'];
 		add_settings_field(

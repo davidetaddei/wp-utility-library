@@ -2,7 +2,7 @@
 
 namespace WpUtilityLibrary\Admin\Fields;
 
-class Text
+class Text implements UIField
 {
 	private $id;
 	private $placeholder;
